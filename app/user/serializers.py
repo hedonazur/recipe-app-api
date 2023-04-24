@@ -28,14 +28,14 @@ class UserSerializer(serializers.ModelSerializer):
 class AuthTokenSerializer(serializers.Serializer):
     """Serializer for the user auth token."""
     email = serializers.EmailField()
-    password = serilizers.CharField(
+    password = serializers.CharField(
         style={'input':'password'},
         trim_whitespace=False,
     )
     def validate(self, attr):
         """Validate and authenticate the user"""
         email = attr.get('email')
-        password = attr.get(password)
+        password = attr.get('password')
         user = authenticate(
             request=self.context.get('request'),
             username=email,
