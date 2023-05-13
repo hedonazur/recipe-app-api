@@ -29,5 +29,6 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
-        """Retrieve and return the authenticated user. Override get_object() to return only the user"""
+        """Retrieve and return the authenticated user. \
+        Override get_object() to return only the user"""
         return self.request.user

@@ -25,7 +25,8 @@ class UserSerializer(serializers.ModelSerializer):
         return get_user_model().objects.create_user(**validated_data)
 
     def update(self, instance, validated_data):
-        """Update and return user. We use the update method provided but we customize it by making sure the password is hashed"""
+        """Update and return user. We use the update method provided \
+        but we customize it by making sure the password is hashed"""
         password = validated_data.pop('password', None)
         user = super().update(instance, validated_data)
 
@@ -40,9 +41,10 @@ class AuthTokenSerializer(serializers.Serializer):
     """Serializer for the user auth token."""
     email = serializers.EmailField()
     password = serializers.CharField(
-        style={'input':'password'},
+        style={'input': 'password'},
         trim_whitespace=False,
     )
+
     def validate(self, attr):
         """Validate and authenticate the user"""
         email = attr.get('email')
